@@ -1,9 +1,12 @@
+@use "sass:math";
+
 // Susy Settings
 // =============
 
 // Susy Language Defaults
 // ----------------------
 // - PRIVATE
+
 @include susy-defaults((
   container: auto,
   math: fluid,
@@ -90,7 +93,7 @@ $susy-keywords: (
 
   @if type-of($_gutters) == list and length($_gutters) > 0 {
     $_gutters: (
-      gutters: nth($_gutters, 2) / nth($_gutters, 1),
+      gutters: math.div(nth($_gutters, 2), nth($_gutters, 1)),
       column-width: nth($_gutters, 1),
     );
   } @else {
@@ -158,7 +161,7 @@ $susy-keywords: (
     $_span: ();
 
     @while $_i <= length($short) {
-      $_this: nth($short, $_i);
+      $_this: math.div(nth($short, $_i));
 
       @if type-of($_this) == number {
         $_span: append($_span, $_this);
