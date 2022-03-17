@@ -161,7 +161,7 @@ $susy-keywords: (
     $_span: ();
 
     @while $_i <= length($short) {
-      $_this: math.div(nth($short, $_i));
+      $_this: nth($short, $_i);
 
       @if type-of($_this) == number {
         $_span: append($_span, $_this);
