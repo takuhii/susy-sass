@@ -1,7 +1,5 @@
 Power Tools For The Web
 =======================
-[![Build Status](https://travis-ci.org/takuhii/susy-sass.png?branch=susy-next)](https://travis-ci.org/takuhii/susy-sass)
-
 First of all, I take no credit for this what-so-ever. I just needed to use Susy 2.x (not Susy 3.x as it has no mixins), and wanted to change it to work with SASS instead of NODE-SASS, which is now does...
 
 Susy was an agnostic set of tools for creating powerful, custom layouts. We provide the language, but you provide all the opinions.
