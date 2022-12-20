@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:map";
 // Gutter Syntax
 // =============
 
@@ -16,8 +18,8 @@
   $_gutters : get-gutters($span);
 
   $_output: (
-    before: map-get($_gutters, before),
-    after: map-get($_gutters, after),
+    before: map.get($_gutters, before),
+    after: map.get($_gutters, after),
     flow: susy-get(flow, $span),
   );
 
@@ -47,7 +49,7 @@
   $span: parse-gutters($span);
 
   $_gutters: get-gutters($span);
-  $_gutters: map-get($_gutters, before) or map-get($_gutters, after);
+  $_gutters: map.get($_gutters, before) or map.get($_gutters, after);
 
   @return $_gutters;
 }
@@ -79,7 +81,7 @@
     } @else {
       $_columns : susy-get(columns, $context);
       $_spread  : if(is-split($context), wide, susy-get(spread, $context));
-      $_gutter  : percentage(math.div($_gutters, susy-sum($_columns, $_gutters, $_spread)));
+      $_gutter  : math.percentage(math.div($_gutters, susy-sum($_columns, $_gutters, $_spread)));
     }
   }
 
@@ -105,9 +107,9 @@
 
   @if is-split($context) and $_gutter {
     $_gutter: $_gutter * 0.5;
-    $_return: map-merge($_return, (before: $_gutter, after: $_gutter));
+    $_return: map.merge($_return, (before: $_gutter, after: $_gutter));
   } @else {
-    $_return: map-merge($_return, ($_gutter-position: $_gutter));
+    $_return: map.merge($_return, ($_gutter-position: $_gutter));
   }
 
   @return $_return;
@@ -124,7 +126,7 @@
   $_inside: inside inside-static;
   $_gutter-position: susy-get(gutter-position, $context);
 
-  @return if(index($_inside, $_gutter-position), true, false);
+  @return if(list.index($_inside, $_gutter-position), true, false);
 }
 
 
@@ -138,7 +140,7 @@
   $_split: split inside inside-static;
   $_gutter-position: susy-get(gutter-position, $context);
 
-  @return if(index($_split, $_gutter-position), true, false);
+  @return if(list.index($_split, $_gutter-position), true, false);
 }
 
 

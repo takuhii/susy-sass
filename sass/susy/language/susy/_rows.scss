@@ -1,3 +1,5 @@
+@use "sass:math";
+@use "sass:meta";
 // Row Start & End
 // ===============
 
@@ -93,8 +95,8 @@
     $location: susy-get(location, $span);
     $n: susy-get(span, $span);
 
-    $number: if(type-of($location) == number, true, false);
-    $index: if($number and unitless($location), true, false);
+    $number: if(meta.type-of($location) == number, true, false);
+    $index: if($number and math.is-unitless($location), true, false);
 
     @if $n == $count {
       $edge: full;
@@ -126,7 +128,7 @@
   $edge       : get-edge($span);
   $n          : susy-get(span, $span);
 
-  @if $edge and not($location) and type-of($n) == number and unitless($n) {
+  @if $edge and not($location) and meta.type-of($n) == number and math.is-unitless($n) {
     @if $edge == first {
       $location: 1;
     } @else if $edge == last {

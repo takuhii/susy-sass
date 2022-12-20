@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 @use "sass:math";
 
 // Span Syntax
@@ -66,21 +69,21 @@
   $margin-after     : null;
 
   // calculate widths
-  $spread: index(map-values($span), spread);
-  $span: if($split-nest and not($spread), map-merge($span, (spread: wide)), $span);
+  $spread: list.index(map.values($span), spread);
+  $span: if($split-nest and not($spread), map.merge($span, (spread: wide)), $span);
   $width: get-span-width($span);
   $gutters: get-gutters($span);
 
   // apply gutters
   @if is-inside($span) {
     @if not(susy-get(role, $span)) {
-      $padding-before: map-get($gutters, before);
-      $padding-after: map-get($gutters, after);
+      $padding-before: map.get($gutters, before);
+      $padding-after: map.get($gutters, after);
     }
   } @else {
     @if not($split-nest) {
-      $margin-before: map-get($gutters, before);
-      $margin-after: map-get($gutters, after);
+      $margin-before: map.get($gutters, before);
+      $margin-after: map.get($gutters, after);
     }
   }
 
@@ -143,9 +146,9 @@
     $n: if($pos == split and $role != nest, susy-count($columns), 100%);
   }
 
-  @if type-of($n) != number {
-    @warn "(#{type-of($n)}) #{$n} is not a valid span.";
-  } @else if unitless($n) {
+  @if meta.type-of($n) != number {
+    @warn "(#{meta.type-of($n)}) #{$n} is not a valid span.";
+  } @else if math.is-unitless($n) {
     $context: susy-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $spread: if(is-inside($span), $spread or wide, $spread);
     $span-sum: susy($n, $location, $columns, $gutters, $spread);
@@ -155,7 +158,7 @@
     @if $_math == static {
       $width: $span-sum * valid-column-math($_math, $_column-width);
     } @else {
-      $width: percentage(math.div($span-sum, $context));
+      $width: math.percentage(math.div($span-sum, $context));
     }
   } @else {
     $width: $n;

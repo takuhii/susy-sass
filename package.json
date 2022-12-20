@@ -1,6 +1,6 @@
 {
   "name": "susy-sass",
-  "version": "2.2.17",
+  "version": "2.2.18",
   "description": "Susy Sass power-tools for web layout updated to use SASS not node-sass. SASS will need to be installed in the core project",
   "author": "Darren Mackintosh <takuhii@gmail.com>",
   "main": "sass/_susy.scss",
@@ -29,6 +29,6 @@
     "url": "https://github.com/takuhii/susy-sass/issues"
   },
   "devDependencies": {
-    "sass-true": "2.0.3"
+    "sass-true": "7.0.0"
   }
 }
