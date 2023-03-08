@@ -1,8 +1,6 @@
-Contributing to Susy
+Contributing to Susy-Sass
 ====================
 Susy-sass exists because of people contributing ideas, code, issues, and sites.
-Have you built a [site using Susy](http://susy.oddbird.net/sites-using-susy/)?
-[Add it to the list](https://github.com/oddbird/susysite/tree/master/content/sites-using-susy.rst).
 
 We are committed to making participation in this project a harassment-free experience for everyone. Please reference the [contributor code of conduct](CODE_OF_CONDUCT.md) for our contributor expectations.
 
@@ -12,8 +10,8 @@ First, try searching for similar questions/answers that are already online.
 If you don't see anything, let us know.
 We're always happy to help!
 
-If it looks like a bug, post it in the [GitHub issue tracker](https://github.com/oddbird/susy/issues).
-If you're just looking for advice on creative uses of Susy, maybe [Stack Overflow](http://stackoverflow.com/questions/tagged/susy-sass) is the place for you.
+If it looks like a bug, post it in the [GitHub issue tracker](https://github.com/takuhii/susy-sass/issues).
+If you're just looking for advice on creative uses of Susy-Sass, maybe [Stack Overflow](http://stackoverflow.com/questions/tagged/susy) is the place for you.
 
 Don't worry, we'll field questions posted in either locations.
 Make sure you explain the context around your problem with code examples, screenshots, or other relevant details.
@@ -22,8 +20,8 @@ The more you tell us, and the more specific you are, the better we can help.
 
 Have an idea?
 -------------
-Susy wouldn't exist in it's current form, without the ideas and feature requests that people have sent in.
-If you want to do something, and don't see a good way to do it, [please tell us](https://github.com/oddbird/susy/issues)
+Susy-Sass wouldn't exist in it's current form, without the ideas and feature requests that people have sent in.
+If you want to do something, and don't see a good way to do it, [please tell us](https://github.com/takuhii/susy-sass/issues)
 
 Fix a bug or typo?
 ------------------
@@ -37,7 +35,7 @@ We love getting pull requests from the community.
 If you have some code, please send us a pull request.
 It's likely that we'll ask for a few adjustments, but don't take it personally — we often do that to each other as well.
 
-We use [Compass](http://compass-style.org) and [True](http://miriamsuzanne.com/true) in development, managed through [bundler](http://bundler.io/), to test Susy and make sure everything is working properly.
+We use [Compass](http://compass-style.org) and [True](http://miriamsuzanne.com/true) in development, managed through [bundler](http://bundler.io/), to test Susy-Sass and make sure everything is working properly.
 
 We wont merge a pull request that breaks the test, or adds a feature that is untested, but you are welcome to submit a work in progress, and we'll help you sort out the details.
 We'll also ask you to update the docs.
@@ -46,7 +44,7 @@ When submitting a pull request, consider:
 - Make sure the tests are up to date and passing
 - Update the docs
 - Add your changes to the
-  [changelog](https://github.com/oddbird/susy/blob/master/docs/changelog.rst).
+  [changelog](https://github.com/takuhii/susy-sass/blob/master/docs/changelog.rst).
 
 Documentation
 -------------

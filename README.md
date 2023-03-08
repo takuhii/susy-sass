@@ -11,5 +11,5 @@ We didn't want to build another system, we wanted to build power tools that you 
 Resources
 ---------
 
-- [Website](http://susy.oddbird.net/)
-- [Documentation](http://susydocs.oddbird.net/)
+- [Website](https://takuhii.github.io/susy-sass/)
+- [Documentation](https://susy-sass-docs.readthedocs.io/en/latest/)
