@@ -67,8 +67,8 @@ Note: The legacy syntax will show deprecation warnings with Dart Sass but will c
 
 For detailed documentation on using Susy, please refer to:
 
-- [Susy Documentation](http://susydocs.oddbird.net/)
-- [Susy Website](http://susy.oddbird.net/)
+- [Susy Documentation](https://susy-sass-docs.readthedocs.io/en/latest/)
+- [Susy Website](http://takuhii.github.io/susy-sass/)
 
 ## Development
 
