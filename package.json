@@ -1,9 +1,13 @@
 {
   "name": "susy-sass",
-  "version": "2.2.24",
+  "version": "2.3.0",
   "description": "Susy Sass power-tools for web layout updated to use SASS not node-sass. SASS will need to be installed in the core project",
   "author": "Darren Mackintosh <takuhii@gmail.com>",
   "main": "sass/_susy.scss",
+  "exports": {
+    ".": "./sass/_susy.scss",
+    "./modern": "./sass/_susy-modern.scss"
+  },
   "repository": {
     "type": "https",
     "url": "https://github.com/takuhii/susy-sass.git"
@@ -22,7 +26,8 @@
     "needs": "*"
   },
   "scripts": {
-    "test": "rake test"
+    "test": "node test-sass.js",
+    "cleanup": "./cleanup.sh"
   },
   "license": "BSD-3-Clause",
   "bugs": {

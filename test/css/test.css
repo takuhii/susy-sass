@@ -1,0 +1,21 @@
+/* Error: "[output-context] Each `assert()` must contain one `output()`, and one `expect()` or `contains()`"
+ *     ,
+ * 137 |     @return _true-error($error, 'output-context');
+ *     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *     '
+ *   node_modules/sass-true/sass/true/_context.scss 137:13  -true-validate-output-context()
+ *   node_modules/sass-true/sass/true/_context.scss 81:26   -true-output-context()
+ *   node_modules/sass-true/sass/true/_assert.scss 204:3    assert()
+ *   test/scss/test/_layout.scss 82:3                       @import
+ *   test/scss/test.scss 7:9                                root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: \"[output-context] Each `assert()` must contain one `output()`, and one `expect()` or `contains()`\"\a     \2577 \a 137 \2502      @return _true-error($error, 'output-context');\a     \2502              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   node_modules/sass-true/sass/true/_context.scss 137:13  -true-validate-output-context()\a   node_modules/sass-true/sass/true/_context.scss 81:26   -true-output-context()\a   node_modules/sass-true/sass/true/_assert.scss 204:3    assert()\a   test/scss/test/_layout.scss 82:3                       @import\a   test/scss/test.scss 7:9                                root stylesheet";
+}

@@ -13,3 +13,36 @@ Resources
 
 - [Website](http://susy.oddbird.net/)
 - [Documentation](http://susydocs.oddbird.net/)
+
+Usage
+-----
+
+### Legacy Syntax (with @import)
+
+```scss
+@import "susy";
+
+.container {
+  @include container();
+}
+
+.span {
+  @include span(3 of 12);
+}
+```
+
+### Modern Syntax (with @use)
+
+```scss
+@use "susy-modern" as susy;
+
+.container {
+  @include susy.container();
+}
+
+.span {
+  @include susy.span(3 of 12);
+}
+```
+
+Note: The legacy syntax will show deprecation warnings with Dart Sass but will continue to work until Dart Sass 3.0.0.

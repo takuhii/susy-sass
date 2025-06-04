@@ -1,13 +1,7 @@
-// Susy Next Syntax
-// ================
-
-$susy-version: 2.3;
-
-@import "../su";
-@import "../output/float";
+// Language partials
+// =================
 
 @import "susy/settings";
-@import "susy/validation";
 @import "susy/grids";
 @import "susy/box-sizing";
 @import "susy/context";
