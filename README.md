@@ -2,7 +2,39 @@
 
 Susy-sass is an agnostic set of tools for creating powerful, custom layouts. We provide the language, but you provide all the opinions.
 
-This is a fork of the original Susy 2.x library (not Susy 3.x as it has no mixins), updated to work with modern Dart Sass instead of the deprecated Node-sass.
+**This is the Susy 2.x _mixin_ API, kept alive on modern [Dart Sass](https://sass-lang.com/dart-sass/).** It's a fork of the original Susy 2.x library — the version with the ergonomic layout mixins (`@include container()`, `@include span(3 of 12)`) — updated to run on Dart Sass instead of the deprecated Node-sass. Susy 3.x deliberately removed those mixins; this project exists to keep them working.
+
+## Which Susy should I use?
+
+There are two maintained forks, serving different needs:
+
+| You want… | Use |
+| --- | --- |
+| Ergonomic layout **mixins** — `@include container()`, `@include span(3 of 12)` | **`susy-sass`** (this project) |
+| Trimmed-down, function-only grid **math** — `span()`, `gutter()`, build your own mixins | [**`susy-sass3`**](https://github.com/takuhii/susy-sass3) |
+
+If you're upgrading an existing Susy 2.x project, or you just want the mixins to do the work for you, you're in the right place. If you'd rather compose your own grid system from raw math primitives, [susy-sass3](https://github.com/takuhii/susy-sass3) is the modern continuation of Susy 3.x.
+
+## Project status
+
+**Legacy, but maintained.** The 2.x mixin API is stable and complete. This project is kept working on current toolchains (Dart Sass, current Node.js), but it is not gaining new features. "Legacy" here means _stable and supported_, not abandoned.
+
+### Support policy
+
+**In scope** (contributions and issues welcome):
+
+- Bug fixes that restore documented 2.x behaviour
+- Compatibility fixes for new Dart Sass / Node.js releases
+- Deprecation-warning cleanup and toolchain/build maintenance
+- Documentation corrections and clarifications
+
+**Out of scope** (belongs in [susy-sass3](https://github.com/takuhii/susy-sass3)):
+
+- New mixins, functions, or settings — any new API surface
+- Changes to the existing mixin API's behaviour or signatures
+- Adopting the function-only 3.x design
+
+If you need new capabilities, [susy-sass3](https://github.com/takuhii/susy-sass3) is the actively-developed continuation and the right place for feature work.
 
 ## Features
 
@@ -80,12 +112,16 @@ Run the tests to ensure everything is working correctly:
 npm test
 ```
 
-This runs the sass-true value-assertion suite (grid math and function output)
-and confirms both the legacy (@import) and modern (@use) entry points compile.
+`npm test` runs the full test suite:
 
-Note: the full CSS output-comparison suite (`test/scss/test.scss`) is currently
-quarantined. Its helpers predate sass-true 5.x's `assert()`/`output()`/`expect()`
-API and need porting before that suite can run again.
+1. the sass-true value-assertion suite (grid math and function return values),
+2. a compile check of both the legacy (`@import`) and modern (`@use`) entry points, and
+3. a sass-true CSS output-comparison suite for the output primitives (the
+   `shared` / `support` / `float` output layers), run via Mocha.
+
+Note: the higher-level `language/susy` mixin output tests (span, container,
+gallery, etc.) are not yet ported to the sass-true 5.x
+`assert()`/`output()`/`expect()` API — see `TODO.md`.
 
 ## License
 

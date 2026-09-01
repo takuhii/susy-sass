@@ -1,21 +1,21 @@
 // Float Isolation API Tests
 // =========================
 
-@include test-module('Isolation API') {
+@include t.test-module('Isolation API') {
 
   // Isolate Output
   // --------------
 
   @include output-test('isolate-output') {
-    @include assert-setup {
-      .test, .expect { @include span(40%); }
-      .expect { clear: both; }
-    }
-    @include assert-output(
+    @include t.assert(
       'Isolation at 30%, has 30% left margin and -100% right margin.'
     ) {
-      .test { @include isolate-output(30%, ltr); }
-      .expect {
+      @include t.output {
+        @include span(40%);
+        @include isolate-output(30%, ltr);
+      }
+      @include t.expect {
+        @include span(40%);
         float: left;
         margin-left: 30%;
         margin-right: -100%;

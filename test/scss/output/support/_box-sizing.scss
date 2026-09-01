@@ -1,25 +1,21 @@
 // Box Sizing Tests
 // ================
 
-@include test-module('Box Sizing Support') {
+@include t.test-module('Box Sizing Support') {
 
   // susy-box-sizing [mixin]
   // -----------------------
 
   @include output-test('susy-box-sizing') {
-
-    // no box-sizing mixin
-    @include assert-setup(border-box) {
-      .test, .expect {
+    @include t.assert('Box-models are correctly output and prefixed.') {
+      @include t.output {
         width: 50%;
         padding: 0 2em;
+        @include susy-box-sizing(border-box);
       }
-    }
-    @include assert-output(
-      'Box-models are correctly output and prefixed.'
-    ) {
-      .test { @include susy-box-sizing(border-box); }
-      .expect {
+      @include t.expect {
+        width: 50%;
+        padding: 0 2em;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;

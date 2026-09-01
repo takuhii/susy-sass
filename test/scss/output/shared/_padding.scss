@@ -1,18 +1,17 @@
 // Shared Padding API Tests
 // ========================
 
-@include test-module('Shared Padding API') {
+@include t.test-module('Shared Padding API') {
 
   // Padding Output
   // --------------
 
   @include output-test('padding-output') {
-    @include assert-setup;
-    @include assert-output(
-      'Elements should have 25% right padding, 8em left.'
-    ) {
-      .test { @include padding-output(25%, 8em, rtl); }
-      .expect {
+    @include t.assert('Elements should have 25% right padding, 8em left.') {
+      @include t.output {
+        @include padding-output(25%, 8em, rtl);
+      }
+      @include t.expect {
         padding-right: 25%;
         padding-left: 8em;
       }

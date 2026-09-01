@@ -1,25 +1,17 @@
 // Clearfix Tests
 // ==============
 
-@include test-module('Clearfix Support') {
+@include t.test-module('Clearfix Support') {
 
   // susy-clearfix [mixin]
   // ---------------------
 
   @include output-test('susy-clearfix') {
-
-    // no clearfix mixin
-    @include assert-setup(clearfix) {
-      .spacer {
-        float: left;
-        width: 25%;
+    @include t.assert('Elements should clear floated children.') {
+      @include t.output {
+        @include susy-clearfix;
       }
-    }
-    @include assert-output(
-      'Elements should clear floated children.'
-    ) {
-      .test { @include susy-clearfix; }
-      .expect {
+      @include t.expect {
         &:after {
           content: " ";
           display: block;

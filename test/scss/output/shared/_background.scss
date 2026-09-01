@@ -1,7 +1,7 @@
 // Shared Grid Background Output Tests
 // ===================================
 
-@include test-module('Grid Background Output') {
+@include t.test-module('Grid Background Output') {
 
   // Grid Background Output
   // ----------------------
@@ -13,20 +13,19 @@
     $clip: content-box, border-box;
     $flow: ltr;
 
-    @include assert-setup('show') {
-      .test, .expect {
+    @include t.assert(
+      'Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline'
+    ) {
+      @include t.output {
         background: none;
         padding-bottom: 2rem;
         padding-top: 2rem;
-      }
-    }
-    @include assert-output(
-      'Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline'
-    ) {
-      .test {
         @include background-grid-output($image, $size, $clip, $flow);
       }
-      .expect {
+      @include t.expect {
+        background: none;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
         background-image: $image;
         background-size: $size;
         background-origin: $clip;

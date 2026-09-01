@@ -3,16 +3,18 @@
 // A subset of the full suite containing only value assertions
 // (assert-equal / assert-true style tests on function return values).
 //
-// These run against the current sass-true release. The CSS output-comparison
-// tests (output-test / assert-setup / assert-output) predate sass-true 5.x's
-// assert()/output()/expect() API and are quarantined in test.scss until ported.
+// These run against the current sass-true release. CSS output-comparison for
+// the output primitives lives in test-output.scss (run via Mocha). The
+// higher-level language/susy mixin output tests are not yet ported.
 
 @import "../../sass/susy";
 @import "sass-true/sass/true";
 
-// Shared test helpers (layout resets, original-grid, etc.)
+// Shared test helpers (layout resets, original-grid, compare-maps).
+// Note: test/layout is intentionally NOT imported — it is visual scaffolding
+// for the old HTML report and contains a stray assertion that corrupts the
+// sass-true results count.
 @import "test/helpers";
-@import "test/layout";
 
 // Math layer (Su) — pure grid math, all value assertions.
 @import "math/maps";

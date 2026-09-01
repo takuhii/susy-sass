@@ -32,9 +32,8 @@ function compile(entry, extraArgs = []) {
 
 try {
   // 1. Assertion suite (sass-true) — verifies grid math and function output.
-  // Runs the value-assertion subset (test-values.scss). The CSS
-  // output-comparison tests are quarantined in test.scss pending a port to
-  // sass-true 5.x's assert()/output()/expect() API.
+  // Runs the value-assertion subset (test-values.scss). CSS output-comparison
+  // for the output primitives is checked separately via Mocha in step 4.
   console.log('\n1. Running sass-true assertion suite (value assertions):');
   const suiteEntry = path.join(__dirname, 'test', 'scss', 'test-values.scss');
   const suiteOutput = compile(suiteEntry, [
@@ -79,6 +78,20 @@ try {
   console.log('✅ Modern syntax test passed!');
 
   fs.rmSync(tmpDir, { recursive: true, force: true });
+
+  // 4. Output-comparison suite (sass-true + Mocha) — verifies the actual CSS
+  // emitted by the output primitives (shared / support / float layers).
+  console.log('\n4. Running sass-true output-comparison suite (Mocha):');
+  const mochaBin = path.join(
+    __dirname,
+    'node_modules',
+    '.bin',
+    process.platform === 'win32' ? 'mocha.cmd' : 'mocha'
+  );
+  execFileSync(mochaBin, [path.join(__dirname, 'test', 'sass.test.js')], {
+    stdio: 'inherit',
+  });
+  console.log('✅ Output-comparison suite passed!');
 
   console.log('\n✅ All tests passed!');
   console.log('Note: Deprecation warnings are expected with the legacy @import syntax.');

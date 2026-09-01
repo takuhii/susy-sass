@@ -1,0 +1,30 @@
+// Susy Output-Comparison Tests (primitives)
+// =========================================
+//
+// CSS output-comparison tests for the low-level output layer (shared / support
+// / float primitives), verified via sass-true's Mocha integration.
+//
+// sass-true is loaded through a namespace (`as t`) so its `output()` mixin does
+// not collide with Susy's own global `output()` mixin.
+//
+// The higher-level language/susy mixin output tests (span, container, gallery,
+// etc.) are not yet ported — see TODO.md.
+
+@use "sass-true/sass/true" as t;
+
+@import "../../sass/susy";
+@import "test/helpers";
+
+// Output-test grouping: wraps related assertions in a sass-true test()
+// (one Mocha `it()`). Defined here so it can reach the `t` namespace.
+@mixin output-test($slug: null) {
+  @include t.test('[mixin] #{$slug}') {
+    @content;
+  }
+}
+
+@import "output/shared";
+@import "output/support";
+@import "output/float";
+
+@include t.report;

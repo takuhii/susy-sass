@@ -1,107 +1,46 @@
 // Test Helpers
 // ============
+//
+// sass-true-agnostic helpers shared by both test entry points:
+//   - test-values.scss  loads sass-true globally (@import) for value assertions
+//   - test-output.scss  loads sass-true namespaced (@use as t) for CSS
+//     output-comparison, to avoid colliding with Susy's own global output()
+//
+// These helpers therefore avoid calling sass-true directly, except
+// `compare-maps`, which uses the globally-available `assert-equal` (only the
+// value suite uses it, and that suite loads sass-true globally).
 
-$true-terminal-output: details;
 
-$output-test-context: true;
-$output-test-results: true;
-
-$output-test-slug: null;
-$output-assert-slug: null;
-
-
-// reset the original grid
+// reset the grid back to the original defaults
 @mixin original-grid {
   $susy: $susy-defaults !global;
 }
 
-
-// Output Test Setup/Teardown
-// --------------------------
-
-@mixin assert-setup(
-  $slug: $output-test-slug,
-  $grid: false,
-  $output: $output-test-context
-) {
-  $output-assert-slug: $slug !global;
-
-  @if $grid {
-    @include layout($grid);
-    @if $output {
-      .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-        @if map-get(layout($grid), columns) {
-          @include container(show-columns);
-        } @else {
-          background: rgba(#ccf, .5);
-        }
-      }
-    }
-  } @else if $output {
-    .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-      overflow: hidden;
-      background: rgba(#ccf, .5);
-    }
-  }
-
-  @if $output {
-    .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-      @content;
-    }
-  }
-}
-
-@mixin assert-teardown(
-) {
-  $output-assert-slug: null !global;
+// alias kept for readability in tests
+@mixin reset-layout {
   @include original-grid;
 }
 
-// Output Test
-// -----------
 
-@mixin output-test(
-  $slug
+// Set grid context for an output test
+// ------------------------------------
+// Establishes a layout so mixins under test resolve against the right grid.
+// Pair with `reset-layout` to restore the defaults afterwards.
+
+@mixin test-layout(
+  $grid: null
 ) {
-  $output-test-slug: $slug !global;
-
-  /* - [mixin] #{$output-test-slug} */
-  @content;
-
-  $output-test-slug: null !global;
+  @if $grid {
+    @include layout($grid);
+  }
 }
 
-// Assert Output
-// -------------
 
-@mixin assert-output(
-  $message: null,
-  $output-test-results: $output-test-results,
-  $output-test-context: $output-test-context
-) {
-  @if $output-test-results {
-    /* "#{$message}" */
-  }
+// compare two maps (value assertions)
+// -----------------------------------
+// Used only by the value-assertion suite (test-values.scss), where sass-true
+// is loaded globally, so `assert-equal` is available unprefixed.
 
-  .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-    @if $output-test-context and $message {
-      &:before {
-        content: $message;
-        display: block;
-        padding: .25rem .5rem;
-        text-align: left;
-        font-style: italic;
-      }
-    }
-    @if $output-test-results {
-      @content;
-    }
-  }
-
-  @include assert-teardown;
-}
-
-// compare two maps
 @mixin compare-maps(
   $test,
   $expect,

@@ -1,19 +1,16 @@
 // Prefix Support
 // ==============
 
-@include test-module('Prefix Support') {
+@include t.test-module('Prefix Support') {
   @include output-test('susy-prefix') {
     $prop: border-radius;
     $val: 3em;
     $prefix: moz webkit official;
-    @include assert-setup;
-    @include assert-output(
-      'Requested prefixes are added to output.'
-    ) {
-      .test {
+    @include t.assert('Requested prefixes are added to output.') {
+      @include t.output {
         @include susy-prefix($prop, $val, $prefix);
       }
-      .expect {
+      @include t.expect {
         -moz-border-radius: 3em;
         -webkit-border-radius: 3em;
         border-radius: 3em;

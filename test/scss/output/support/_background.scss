@@ -1,19 +1,16 @@
 // Background Support
 // ==================
 
-@include test-module('Background Support') {
+@include t.test-module('Background Support') {
 
   // Background Image
   @include output-test('susy-background-image') {
     $bg: linear-gradient(to left, red, green, blue);
-    @include assert-setup;
-    @include assert-output(
-      'Without Compass, background-image is output directly.'
-    ) {
-      .test {
+    @include t.assert('Without Compass, background-image is output directly.') {
+      @include t.output {
         @include susy-background-image($bg);
       }
-      .expect {
+      @include t.expect {
         background-image: $bg;
       }
     }
@@ -22,14 +19,11 @@
   // Background Size
   @include output-test('susy-background-size') {
     $size: cover;
-    @include assert-setup;
-    @include assert-output(
-      'Without Compass, background-size is output directly.'
-    ) {
-      .test {
+    @include t.assert('Without Compass, background-size is output directly.') {
+      @include t.output {
         @include susy-background-size($size);
       }
-      .expect {
+      @include t.expect {
         background-size: $size;
       }
     }
@@ -38,14 +32,11 @@
   // Background Origin
   @include output-test('susy-background-origin') {
     $origin: content-box;
-    @include assert-setup;
-    @include assert-output(
-      'Without Compass, background-origin is output directly.'
-    ) {
-      .test {
+    @include t.assert('Without Compass, background-origin is output directly.') {
+      @include t.output {
         @include susy-background-origin($origin);
       }
-      .expect {
+      @include t.expect {
         background-origin: $origin;
       }
     }
@@ -54,14 +45,11 @@
   // Background Clip
   @include output-test('susy-background-clip') {
     $clip: border-box;
-    @include assert-setup;
-    @include assert-output(
-      'Without Compass, background-clip is output directly.'
-    ) {
-      .test {
+    @include t.assert('Without Compass, background-clip is output directly.') {
+      @include t.output {
         @include susy-background-clip($clip);
       }
-      .expect {
+      @include t.expect {
         background-clip: $clip;
       }
     }
