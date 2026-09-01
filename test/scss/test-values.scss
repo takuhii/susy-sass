@@ -1,0 +1,28 @@
+// Susy Value-Assertion Tests
+// ==========================
+// A subset of the full suite containing only value assertions
+// (assert-equal / assert-true style tests on function return values).
+//
+// These run against the current sass-true release. The CSS output-comparison
+// tests (output-test / assert-setup / assert-output) predate sass-true 5.x's
+// assert()/output()/expect() API and are quarantined in test.scss until ported.
+
+@import "../../sass/susy";
+@import "sass-true/sass/true";
+
+// Shared test helpers (layout resets, original-grid, etc.)
+@import "test/helpers";
+@import "test/layout";
+
+// Math layer (Su) — pure grid math, all value assertions.
+@import "math/maps";
+@import "math/settings";
+@import "math/validation";
+@import "math/grid";
+
+// Language layer — value-assertion-only files.
+@import "language/susy/settings";
+@import "language/susy/grids";
+@import "language/susy/context";
+
+@include report;

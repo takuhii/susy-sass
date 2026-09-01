@@ -80,15 +80,12 @@ Run the tests to ensure everything is working correctly:
 npm test
 ```
 
-This will test both the legacy (@import) and modern (@use) syntax approaches.
+This runs the sass-true value-assertion suite (grid math and function output)
+and confirms both the legacy (@import) and modern (@use) entry points compile.
 
-### Cleanup
-
-If you want to remove unnecessary Ruby-related files:
-
-```bash
-npm run cleanup
-```
+Note: the full CSS output-comparison suite (`test/scss/test.scss`) is currently
+quarantined. Its helpers predate sass-true 5.x's `assert()`/`output()`/`expect()`
+API and need porting before that suite can run again.
 
 ## License
 

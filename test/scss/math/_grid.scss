@@ -144,7 +144,7 @@
 
     // asymmetrical
     $columns: 1 2 3 2 1 2 3;
-    $gutters: 1/4;
+    $gutters: .25;
     $test: susy($span, $location, $columns, $gutters);
     $expect: 7.5;
     @include assert-equal($test, $expect,
